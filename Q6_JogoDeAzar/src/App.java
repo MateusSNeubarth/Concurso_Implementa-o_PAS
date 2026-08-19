@@ -1,10 +1,16 @@
 public class App {
     public static void main(String[] args) {
-        Dado d6 = new Dado(6);
-        Dado d20 = new Dado(20);
+        IDado d6 = new DadoComHistorico(new Dado(6));
+
         d6.rolar();
-        d20.rolar();
-        System.out.println("D6: " + d6.getValor());
-        System.out.println("D20: " + d20.getValor());
+        d6.rolar();
+        d6.rolar();
+        d6.rolar();
+
+        System.out.println("Valor atual: " + d6.getValor());
+
+        DadoComHistorico d6Historico = (DadoComHistorico) d6;
+
+        System.out.println("Histórico: " + d6Historico.getHistorico());
     }
 }
