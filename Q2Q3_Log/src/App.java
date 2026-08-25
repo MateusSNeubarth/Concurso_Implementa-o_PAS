@@ -1,11 +1,14 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        LogSimples log = new LogSimples();
+        Log log = LogSimples.getInstance();
         log.log("Mensagem de alerta 1");
         log.log("Mensagem de alarme 23");
         log.log("Mensagem de PANICO!!");
 
-        for(String m:log){
+        log = new LogColchetes(new LogNivel(LogSimples.getInstance(), "NIVEL 1"));
+        log.log("Mensagem de alerta 1");
+
+        for(String m: LogSimples.getInstance()){
             System.out.println(m);
         }
     }
